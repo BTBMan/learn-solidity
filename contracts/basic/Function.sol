@@ -11,17 +11,18 @@ contract Function {
     // 函数权限/功能：payable-可支付 pure-纯函数 不能对合约里的状态进行读写 view-只能查看合约里的状态 不能写入 什么都没有的函数可以读写
     // 为什么会有这些权限？因为合约里的状态变量是存在链上的 每次操作链上的状态会消耗昂贵的 gas fee，调用任何未标记 view 和 pure 的函数就视为修改链上的状态
     int256 public _number = 1;
+
     function add() external {
         _number += 1;
     }
 
     // 用 pure 通过变量传递做返回值
-    function addPure(int256 _n) external pure returns(int256 new_number) {
+    function addPure(int256 _n) external pure returns (int256 new_number) {
         new_number = _n + 5;
     }
 
     // 用 view 读后返回值
-    function addView() external view returns(int256 new_number) {
+    function addView() external view returns (int256 new_number) {
         new_number = _number + 5;
     }
 

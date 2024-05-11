@@ -20,11 +20,15 @@ contract ValueTypes {
     bytes1 public _byte = _bytes32[0]; // 存储 _bytes32 的第一个字节
 
     // 枚举
-    enum ActionSet {Buy, Hold, Sell} // 和其他语音类型 默认从 0 1 2 ... 表示
+    enum ActionSet {
+        Buy,
+        Hold,
+        Sell
+    } // 和其他语音类型 默认从 0 1 2 ... 表示
     ActionSet action = ActionSet.Buy;
 
     // enum 可以和 uint 显士转换
-    function enum2Uint() external view returns(uint) {
+    function enum2Uint() external view returns (uint) {
         return uint(action);
     }
 }

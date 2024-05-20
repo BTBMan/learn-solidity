@@ -6,33 +6,39 @@
 	"output": {
 		"abi": [
 			{
+				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
 						"internalType": "uint256",
-						"name": "",
+						"name": "value",
 						"type": "uint256"
 					}
 				],
-				"name": "idToAddress",
-				"outputs": [
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [
 					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "idToId",
+				"name": "_balances",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -46,17 +52,22 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "key",
-						"type": "uint256"
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "val",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
-				"name": "set",
+				"name": "doTransfer",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -75,7 +86,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Mapping.sol": "Mapping"
+			"Event.sol": "Event"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -89,12 +100,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"Mapping.sol": {
-			"keccak256": "0x7ee23bb00b4b0d8b08a26806f4bfa3cf8083edc4f0a72ac7ab7a77e0d7cdb1c3",
+		"Event.sol": {
+			"keccak256": "0x4f194b2b6d1b7fae7361995b06eae1d6b9c5951f213386610100a0ce7b889c40",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c5ef393f5de3c5d34cde99d2a518b1a1c5af75f55f6873a6c58615d5787fae94",
-				"dweb:/ipfs/QmdJd5SNwkkLAswqZz2noxUpGhZZ8gMp4TG73TTbMhwGMi"
+				"bzz-raw://3ae788cdaedd5661cff51ad8934737e70d2db4ca6d259acc00a7da1995de1076",
+				"dweb:/ipfs/QmdbaS6r1TEKMrRUbUSz19XKaG4AbHDUm2nfPY8RgcbWjH"
 			]
 		}
 	},

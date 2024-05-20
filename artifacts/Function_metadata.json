@@ -26,6 +26,13 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "addCall",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "int256",
@@ -55,6 +62,60 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "readReturn",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_uint",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_bool",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "return1",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_uint",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_bool",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "return2",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_uint",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_bool",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
 				"type": "function"
 			}
 		],
@@ -86,11 +147,11 @@
 	},
 	"sources": {
 		"Function.sol": {
-			"keccak256": "0xf8978eb17b64b8e3f08384827b4dab13154c6f7a9fe65acc8ecc05baf8f147c0",
+			"keccak256": "0x39033d0c996ef9570e05ba47b506258904332a6f14a19af75e6460c92fb2c925",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://521cba697fb78a320ca72de4b86fd432ce30203e30763897176c5862e8b50710",
-				"dweb:/ipfs/QmcgubdcQoEkbpepnV3UwB9quoWjzVdVZ6ioeFVaN5eSXt"
+				"bzz-raw://9df87b784e43ac15f9e2c32a2443618ed39bc1fbdae3422bcc58891292c22253",
+				"dweb:/ipfs/QmXeWdHtcGVken4pW3pKFoGS7oQSg2EyfCdX7MAXzgULdi"
 			]
 		}
 	},

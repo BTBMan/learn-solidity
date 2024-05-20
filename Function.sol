@@ -24,4 +24,34 @@ contract Function {
     function addView() external view returns(int256 new_number) {
         new_number = _number + 5;
     }
+
+    // 内部函数 只能合约内部调用
+    function addInternal() internal {
+        _number = _number + 1;
+    }
+
+    // 合约内的函数可以调用内部的函数
+    function addCall() external {
+        addInternal();
+    }
+
+    // 输出 returns 表明返回的类型和变量名 函数内通过指定的变量名赋值后自动返回
+    function return1() public pure returns(uint256 _uint, bool _bool) {
+        _uint = 8;
+        _bool = true;
+    }
+
+    // 通过 return 关键字返回
+    function return2() public pure returns(uint256 _uint, bool _bool) {
+        return(9, true);
+    }
+
+    function readReturn() public pure returns(uint256 _uint, bool _bool) {
+        // 解构赋值
+        _uint;
+        _bool;
+
+        (_uint, _bool) = return1();
+    }
+
 }

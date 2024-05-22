@@ -6,17 +6,17 @@
 	"output": {
 		"abi": [
 			{
+				"anonymous": false,
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "n",
-						"type": "uint256"
+						"indexed": false,
+						"internalType": "string",
+						"name": "msg",
+						"type": "string"
 					}
 				],
-				"name": "do1",
-				"outputs": [],
-				"stateMutability": "pure",
-				"type": "function"
+				"name": "E1",
+				"type": "event"
 			},
 			{
 				"inputs": [
@@ -26,8 +26,14 @@
 						"type": "uint256"
 					}
 				],
-				"name": "do2",
-				"outputs": [],
+				"name": "do1",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "x",
+						"type": "uint256"
+					}
+				],
 				"stateMutability": "pure",
 				"type": "function"
 			}
@@ -45,7 +51,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Abstract.sol": "Use1"
+			"Abstract.sol": "T2"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},

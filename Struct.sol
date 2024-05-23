@@ -21,3 +21,8 @@ contract Struct {
     //    aa;
     // }
 }
+
+// struct 也可以写在 contract 外部
+struct A {
+    uint n;
+}

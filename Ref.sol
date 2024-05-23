@@ -3,6 +3,7 @@ pragma solidity ^0.8.4;
 
 contract Ref {
     function test() public pure {
+        // memory 声明的数组必须固定长度 并且声明长度后长度不能变
         uint[] memory x1 = new uint[](3);
         // memory 必须一个一个的赋值
         x1[0]=0;

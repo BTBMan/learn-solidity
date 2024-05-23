@@ -1,0 +1,61 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "do1",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Import.sol": "Import"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Import.sol": {
+			"keccak256": "0x5175fb5b14435726fc5bcf9ae8e97ee99335219ebd161d60826ea66d949147b4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://08be551aa0aaaa15500098f9de2509ecac673a92543eb24f3f3cacd2da48c2b0",
+				"dweb:/ipfs/QmXC1RMDiisHQkYCUXHtm4SpZevWgPrdHMUu2HmsBy5AVB"
+			]
+		},
+		"Inheritance.sol": {
+			"keccak256": "0xb3ffcf3cacd816fc44c6f513b91ed62ace2b3eb84bc126ca8d32cc6b9fce6bac",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://45ffb1c0cf5279527acc688bbcb128136ebb021f7982634f40d046eb7e531117",
+				"dweb:/ipfs/QmRVdwQJD1diyn5jNNc2xnDiGzEgteRHH2SAgE5nJZDcNb"
+			]
+		}
+	},
+	"version": 1
+}

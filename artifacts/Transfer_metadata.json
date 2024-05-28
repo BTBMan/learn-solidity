@@ -11,6 +11,16 @@
 				"type": "constructor"
 			},
 			{
+				"inputs": [],
+				"name": "CallFailed",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SendFailed",
+				"type": "error"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address payable",
@@ -26,6 +36,19 @@
 				"name": "callETH",
 				"outputs": [],
 				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -97,11 +120,11 @@
 	},
 	"sources": {
 		"Transfer.sol": {
-			"keccak256": "0x1246dd175ebf1db0c9a69f4c1d5166730a08ebea48cfc4ea4b5549b58dc0c9a5",
+			"keccak256": "0xd73fedb2ac290eaba6dc10c03e59c11870f3e004e553783d4345e849a4543ea8",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0b3ab6e1238f52b4abd4530d505c6a45331ffca47d50a474cda9ed6a6153f427",
-				"dweb:/ipfs/QmV7qukDvwKMYVaXJnri1jpob2vv86H81CirK8GNB7wEzu"
+				"bzz-raw://52fd2355f10ae7463c37bf3a38916848a7448993e1ec846dd36584a8d51ab3d1",
+				"dweb:/ipfs/QmX3eGx2dFz1S6tuMpDTRMKEtEhLGM1oVBEs3831aLHjQ5"
 			]
 		}
 	},

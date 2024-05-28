@@ -19,6 +19,17 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "msg",
+						"type": "string"
+					}
+				],
+				"name": "Error2",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "n",
 						"type": "uint256"
@@ -84,11 +95,11 @@
 	},
 	"sources": {
 		"Error.sol": {
-			"keccak256": "0x20f345fb539e639abf40e9185a002296588f9f3f396ecc5553d61a439eb00e2e",
+			"keccak256": "0xda49ceed356ac5ee5746e8b6838296532d79e849e2d788e1365e46d7eb728c8e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3fc19b7976be8470840d71db8d3948de17cb0f4ae584a0afb558bbb315106489",
-				"dweb:/ipfs/Qmc5KpbdrP5SKZ2mWPhstmiQbwaxWowfLz8NLJoHWXoJt1"
+				"bzz-raw://af0eaf049809884fdff9bd70b9b002d300dfa36084c898f47cf95991406207cd",
+				"dweb:/ipfs/Qmcjwwzi56WepdmSDkjUNy4PcRSQR6HV7KD5E9aytb1HvW"
 			]
 		}
 	},

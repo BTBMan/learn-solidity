@@ -2,6 +2,9 @@
 pragma solidity ^0.8.4;
 
 contract Errors {
+    // 也可以在合约内定义错误
+    error Error2(string msg);
+
     function throwError(uint n) public pure {
         if (n != 1) {
             // 调用错误配合 revert

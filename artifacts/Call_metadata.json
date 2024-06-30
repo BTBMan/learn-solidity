@@ -6,36 +6,33 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
-				"stateMutability": "payable",
-				"type": "constructor"
-			},
-			{
 				"anonymous": false,
 				"inputs": [
 					{
 						"indexed": false,
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
 					},
 					{
 						"indexed": false,
-						"internalType": "uint256",
-						"name": "gas",
-						"type": "uint256"
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
 					}
 				],
-				"name": "Log",
+				"name": "Response",
 				"type": "event"
 			},
 			{
-				"stateMutability": "payable",
-				"type": "fallback"
-			},
-			{
-				"inputs": [],
-				"name": "getBalance",
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "callGetX",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -43,31 +40,36 @@
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getX",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_addr",
+						"type": "address"
+					}
+				],
+				"name": "callNonExist",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "addr",
+						"type": "address"
+					},
+					{
 						"internalType": "uint256",
-						"name": "v",
+						"name": "x",
 						"type": "uint256"
 					}
 				],
-				"name": "setX",
+				"name": "callSetX",
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
@@ -86,7 +88,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"OtherContract.sol": "OtherContract"
+			"Call.sol": "Call"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -100,12 +102,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"OtherContract.sol": {
-			"keccak256": "0x93c297d679a905d3a65e4ae7f28ba7b3b8eaa92b7c98ecabb37b88e26e6da80a",
+		"Call.sol": {
+			"keccak256": "0x9704719812ca84023a959abf0826a2fe47156f38b3bba8e649c07cfc8c838971",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://bd125320db5fdefab7573be9fe5acf808abf9ed6fd9cc1e2a9bd926ff434d3fd",
-				"dweb:/ipfs/QmUQZxTQ55q7PwQ6rKtn16VzAUrd2g1Z5JDsdnMCkxHp1i"
+				"bzz-raw://fc60eaa2629662e9dd69e8bb145d1a2c6d4abcb4e91669a333b425e95e0d2e85",
+				"dweb:/ipfs/QmbosDp1MvYmSLYAE5vHoDEjZkRQkMBgKfPUtt2U1QGNuJ"
 			]
 		}
 	},

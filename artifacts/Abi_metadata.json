@@ -1,0 +1,139 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "decode",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "dx",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "daddr",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "dstring",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256[2]",
+						"name": "duintArray",
+						"type": "uint256[2]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "encode",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "result",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "encodeData",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "encodePacked",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "result",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "encodeWithSelector",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "result",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "encodeWithSignature",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "result",
+						"type": "bytes"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Abi.sol": "Abi"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Abi.sol": {
+			"keccak256": "0x0c72d40bfdfaf7ebddc9b055b265da097c37ea4855e013a083df078a7ebddb3f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ef10cf7ef66af407f3890eb084b521d2658f15f8d88045691f68af8a1eea1a4e",
+				"dweb:/ipfs/QmZscnhYxg2r4b7nB5Uid7izDKWHUa9YAbBNkH8f5sCaWD"
+			]
+		}
+	},
+	"version": 1
+}

@@ -22,7 +22,7 @@ contract Pair {
 }
 
 // 工厂合约
-contract FactoryPair {
+contract PairFactory {
     // 通过两个代币地址查 Pair 地址
     mapping(address => mapping(address => address)) public getPair;
     // 存储所有 Pair 地址

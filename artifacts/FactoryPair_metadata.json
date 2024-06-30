@@ -86,7 +86,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"SimpleCreate.sol": "FactoryPair"
+			"SimpleUniswap2.sol": "FactoryPair"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -100,12 +100,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"SimpleCreate.sol": {
-			"keccak256": "0x7ef86764916325d7c4fb4952d5378dd5ce21a9c599a24ff1a2412f0d136e77d4",
+		"SimpleUniswap2.sol": {
+			"keccak256": "0x19f3e42961950d17563bff56348314573507e0bb2c6aecaecd4e4871dffcb6d9",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9d045bc4ba704f16e07f2808a3e7912bf389075e1e2202f6c96cca197bc3e75b",
-				"dweb:/ipfs/QmPk5hzbt4fLoRqW2Jis94aC8JfnX5A89pJCyndR33dYTT"
+				"bzz-raw://d6e4229194f37f3c0db58a2382fd85fb9392cebe3aa4c4504e65f00a99283788",
+				"dweb:/ipfs/QmZC5BkMriJAQbFuoiDakw479ApQfM7MYHjESPScXrdg2Y"
 			]
 		}
 	},

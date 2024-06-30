@@ -6,13 +6,14 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
-				"stateMutability": "payable",
-				"type": "constructor"
-			},
-			{
-				"inputs": [],
-				"name": "factory",
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "allPairs",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -27,36 +28,40 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_tokenA",
+						"name": "tokenA",
 						"type": "address"
 					},
 					{
 						"internalType": "address",
-						"name": "_tokenB",
+						"name": "tokenB",
 						"type": "address"
 					}
 				],
-				"name": "initialize",
-				"outputs": [],
+				"name": "createPair",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "pairAddr",
+						"type": "address"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "tokenA",
-				"outputs": [
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
 					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "tokenB",
+				"name": "getPair",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -81,7 +86,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"SimpleUniswap2.sol": "Pair"
+			"SimpleUniswap2.sol": "PairFactory"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -96,11 +101,11 @@
 	},
 	"sources": {
 		"SimpleUniswap2.sol": {
-			"keccak256": "0xcf265e1947f6ddbe68607a408581fbf573e36474ab31cbf218531a26fabd3221",
+			"keccak256": "0xb6467865d63a83d4bb3a7c36704edec40c23e0c569a3a8f30382194392f06a09",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://07a848d852b1912318cf2337e3b4617bef3f0aa064f066e722082a7c2bf950cd",
-				"dweb:/ipfs/QmXejUTuW68iNHjJmW1PJ1BwzCejyofSKgM2xJfefEcCvx"
+				"bzz-raw://82754a93897ed7e9696c3e22a6a36a5909202fed313dd49aba9158ce510c8283",
+				"dweb:/ipfs/QmbDFmuS4hDxvjHpdUwsXvxBUc7yabWektcmmWVshKGyqw"
 			]
 		}
 	},

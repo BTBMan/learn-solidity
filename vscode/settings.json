@@ -1,0 +1,6 @@
+{
+  // solidity
+  "[solidity]": {
+    "editor.defaultFormatter": "JuanBlanco.solidity"
+  }
+}

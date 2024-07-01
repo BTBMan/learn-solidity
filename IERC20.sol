@@ -37,7 +37,10 @@ interface IERC20 {
    * @dev 返回`owner`账户授权给`spender`账户的额度，默认为 0。
    * 当 {approve} 或 {transferFrom} 被调用时，`allowance`会改变.
    */
-  function allowance(address owner, address spender) external view returns (uint256);
+  function allowance(
+    address owner,
+    address spender
+  ) external view returns (uint256);
 
   /**
    * @dev 调用者账户给`spender`账户授权 `amount`数量代币。
@@ -52,8 +55,8 @@ interface IERC20 {
    * 释放 {Transfer} 事件.
    */
   function transferFrom(
-      address from,
-      address to,
-      uint256 amount
+    address from,
+    address to,
+    uint256 amount
   ) external returns (bool);
 }

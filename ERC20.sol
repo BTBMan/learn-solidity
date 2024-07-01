@@ -4,12 +4,12 @@ pragma solidity ^0.8.4;
 // ERC20 是以太坊上的标准代币
 // 实现了转账的基本逻辑
 
-import './IERC20.sol';
+import "./IERC20.sol";
 
 abstract contract ERC20 is IERC20 {
   // 通过 override 修饰 public 变量, 会重写父合约中与当前变量同名的 getter 函数, 这里重写的是 balanceOf 和 allowance
-  mapping (address => uint256) public override balanceOf;
-  mapping (address => mapping(address => uint256)) public override allowance;
+  mapping(address => uint256) public override balanceOf;
+  mapping(address => mapping(address => uint256)) public override allowance;
 
   // 代币总供给
   uint256 public override totalSupply;
@@ -27,7 +27,10 @@ abstract contract ERC20 is IERC20 {
   }
 
   // 实现转账, 调用者转账给 to 账户 amount 数量代币
-  function transfer(address to, uint256 amount) external override returns(bool) {
+  function transfer(
+    address to,
+    uint256 amount
+  ) external override returns (bool) {
     balanceOf[msg.sender] -= amount; // 调用者账户减少对应的金额
     balanceOf[to] += amount; // 接收者账户增加对应的金额
 

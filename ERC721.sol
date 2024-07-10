@@ -24,7 +24,7 @@ contract ERC721 is IERC721, IERC721Metadata {
 
   string public override name; // Token 名称
   string public override symbol; // Token 代号
-  mapping(uint => address) private _owner; // tokenId 对应的持有人 map
+  mapping(uint => address) private _owners; // tokenId 对应的持有人 map
   mapping(address => uint) private _balance; // address 对应的持仓数量 map
   mapping(uint => address) private _tokenApprovals; // tokenId 对应的授权地址 map
   mapping(address => mapping(address => bool)) private _operatorApprovals; // owner 地址到 operator 地址的批量授权 map
@@ -59,7 +59,7 @@ contract ERC721 is IERC721, IERC721Metadata {
    * 实现查询 tokenId 的 owner
    */
   function ownerOf(uint tokenId) public view override returns (address) {
-    address owner = _owner[tokenId];
+    address owner = _owners[tokenId];
     require(owner != address(0), unicode"token 不存在");
     return owner;
   }
@@ -90,7 +90,7 @@ contract ERC721 is IERC721, IERC721Metadata {
    * 实现查询 tokenId 的授权地址
    */
   function getApprove(uint tokenId) external view override returns (address) {
-    require(_owner[tokenId] != address(0), unicode"token 不存在");
+    require(_owners[tokenId] != address(0), unicode"token 不存在");
     return _tokenApprovals[tokenId];
   }
 
@@ -103,13 +103,15 @@ contract ERC721 is IERC721, IERC721Metadata {
    */
   function approve(address to, uint tokenId) external override {
     // 获取当前 tokenId 的 owner
-    address owner = _owner[tokenId];
+    address owner = _owners[tokenId];
 
     require(
       owner != to &&
         (msg.sender == owner || _operatorApprovals[owner][msg.sender]),
       unicode"您暂无授权条件"
     );
+
+    _approve(owner, to, tokenId);
   }
 
   /**
@@ -118,5 +120,200 @@ contract ERC721 is IERC721, IERC721Metadata {
   function _approve(address owner, address to, uint tokenId) private {
     _tokenApprovals[tokenId] = to; // 授权 to 地址操作 tokenId
     emit Approval(owner, to, tokenId); // 触发事件
+  }
+
+  /**
+   * 实现非安全转账
+   * 从 {from} 转给 {to} 的 {tokenId}
+   */
+  function transferFrom(
+    address from,
+    address to,
+    uint256 tokenId
+  ) external override {
+    address owner = ownerOf(tokenId);
+
+    require(
+      _isApprovedOrOwner(owner, msg.sender, tokenId),
+      unicode"调用者即不是 owner 也不是被授权的地址"
+    );
+
+    _transfer(owner, from, to, tokenId);
+  }
+
+  /**
+   * 转账函数
+   * 从 {from} 转账给 {to} 的 {tokenId}
+   * 要求:
+   * 1. from 是 tokenId 的拥有者
+   * 2. to 不能是 0 地址
+   */
+  function _transfer(
+    address owner,
+    address from,
+    address to,
+    uint256 tokenId
+  ) private {
+    require(to != address(0), unicode"不能转账给 0 地址");
+    require(from == owner, unicode"出账用户不是 tokenId 的拥有者");
+
+    // 调用这个函数的作用是:
+    // 由于把 tokenId 从 from 转账给 to, 这里的 from 则为 owner
+    // 所以转账后 owner 也发生改变, 由原来的 from 变为 to
+    // 那么原 owner 授权过的地址应该归 0
+    _approve(owner, address(0), tokenId);
+
+    _balance[from] -= 1;
+    _balance[to] += 1;
+    _owners[tokenId] = to; // 由于把 tokenId 从 from 转账给 to, 所以 tokenId 的拥有者也变为 to 了
+
+    emit Transfer(from, to, tokenId); // 触发对应事件
+  }
+
+  /**
+   * 查询 {spender} 是否为 {owner}
+   * 或 {tokenId} 是否被授权给 {spender} 账户 _tokenApprovals
+   * 或 {owner} 是否批量授权给 {spender} _operatorApprovals
+   */
+  function _isApprovedOrOwner(
+    address owner,
+    address spender,
+    uint256 tokenId
+  ) private view returns (bool) {
+    return
+      spender == owner ||
+      _tokenApprovals[tokenId] == spender ||
+      _operatorApprovals[owner][spender];
+  }
+
+  /**
+   * 实现安全转账
+   */
+  function safeTransferFrom(
+    address from,
+    address to,
+    uint256 tokenId,
+    bytes memory data
+  ) public override {
+    // 前置判断和普通转账一样
+    address owner = ownerOf(tokenId);
+
+    require(
+      _isApprovedOrOwner(owner, msg.sender, tokenId),
+      unicode"调用者即不是 owner 也不是被授权的地址"
+    );
+
+    _safeTransfer(owner, from, to, tokenId, data);
+  }
+
+  /**
+   * 安全转账重载
+   */
+  function safeTransferFrom(
+    address from,
+    address to,
+    uint tokenId
+  ) external override {
+    safeTransferFrom(from, to, tokenId, "");
+  }
+
+  /**
+   * 安全转账函数
+   */
+  function _safeTransfer(
+    address owner,
+    address from,
+    address to,
+    uint256 tokenId,
+    bytes memory data
+  ) private {
+    _transfer(owner, from, to, tokenId);
+
+    // 多验证是否支持 IERC721Receiver-onERC271Received, 没有实现则回滚交易
+    require(
+      _onCheckOnERC721Received(from, to, tokenId, data),
+      unicode"没有实现 onERC721Received 方法"
+    );
+  }
+
+  /**
+   * 检查合约是否支持 IERC721Receiver-onERC271Received 函数
+   * to 为合约的时候才检查
+   */
+  function _onCheckOnERC721Received(
+    address from,
+    address to,
+    uint256 tokenId,
+    bytes memory data
+  ) private returns (bool) {
+    // 是合约走验证
+    if (to.isContract()) {
+      // 通过 IERC721Receiver 包裹合约并调用合约内部的 onERC721Received 方法
+      return
+        IERC721Receiver(to).onERC271Received(msg.sender, from, tokenId, data) ==
+        IERC721Receiver.onERC271Received.selector; // 详见函数选择器了解更多 https://www.wtf.academy/docs/solidity-102/Selector/
+    } else {
+      return true;
+    }
+  }
+
+  /**
+   * 铸币函数 调整 _balance 和 _owners 铸造 {tokenId} 并转账给 {to}
+   * 函数必须支持重写
+   * 将要铸造的 tokenId 没有被铸造过
+   * to 不能是 0 地址
+   * 触发 Transfer 事件
+   */
+  function _mint(address to, uint256 tokenId) internal virtual {
+    require(to != address(0), unicode"转账地址不可以是 0 地址");
+    require(_owners[tokenId] == address(0), unicode"代币已经被铸造过");
+
+    _balance[to] += 1;
+    _owners[tokenId] = to;
+
+    emit Transfer(address(0), to, tokenId); // 铸币是 0 地址
+  }
+
+  /**
+   * 销毁函数 销毁 {tokenId}
+   * tokenId 必须存在
+   * 当前调用者必须是 owner
+   * 触发 Trqnsfer 事件
+   */
+  function _burn(uint256 tokenId) internal virtual {
+    address owner = _owners[tokenId];
+    require(owner != address(0), unicode"tokenId 不存在");
+    require(msg.sender == owner, unicode"调用者不是该 token 的持有者");
+
+    _approve(owner, address(0), tokenId); // 删除之前的授权数据, 和转账的操作一样
+    _balance[owner] -= 1; // owner 的余额 -1
+    delete _owners[tokenId]; // 删除 tokenId 对应的拥有者
+
+    emit Transfer(owner, address(0), tokenId);
+  }
+
+  /**
+   * 实现 IERC721Metadata 中的 tokenURI 函数, 查询 metadata
+   * 支持重写
+   */
+  function tokenURI(
+    uint256 tokenId
+  ) public view virtual override returns (string memory) {
+    require(_owners[tokenId] != address(0), unicode"tokenId 不存在");
+
+    string memory baseURI = _tokenURI();
+
+    return
+      bytes(baseURI).length > 0
+        ? string(abi.encodePacked(baseURI, tokenId.toString())) // 把 tokenURI 和 tokenId 打包
+        : "";
+  }
+
+  /**
+   * 计算 tokenURI
+   * 须要支持重写
+   */
+  function _tokenURI() internal view virtual returns (string memory) {
+    return "";
   }
 }

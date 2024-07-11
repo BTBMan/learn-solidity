@@ -301,7 +301,7 @@ contract ERC721 is IERC721, IERC721Metadata {
   ) public view virtual override returns (string memory) {
     require(_owners[tokenId] != address(0), unicode"tokenId 不存在");
 
-    string memory baseURI = _tokenURI();
+    string memory baseURI = _baseURI();
 
     return
       bytes(baseURI).length > 0
@@ -313,7 +313,7 @@ contract ERC721 is IERC721, IERC721Metadata {
    * 计算 tokenURI
    * 须要支持重写
    */
-  function _tokenURI() internal view virtual returns (string memory) {
+  function _baseURI() internal view virtual returns (string memory) {
     return "";
   }
 }

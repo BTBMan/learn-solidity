@@ -3,7 +3,7 @@ pragma solidity ^0.8.4;
 
 contract Store {
     // 三种不同的存储类型 storage memory calldata
-    // storage 存储在链上（相当于电脑硬盘上） 操作消耗要的 gas fee 高，默认都存储在 storage 里
+    // storage 存储在链上（相当于电脑硬盘上） 操作消耗要的 gas fee 高，state 默认都存储在 storage 里
     // memory 临时存储在内存里 消耗 gas 少
     // calldata 临时存储在内存里 消耗 gas 少， 不可变，一般用于函数变量
     uint256[] public storageNumber = [0, 1, 2]; // 默认 storage
@@ -23,9 +23,10 @@ contract Store {
 
     // 作用域
     uint256 public _number = 1; // 状态变量 存储在链上 消耗 gas 高 都可以访问
-    function test() public pure returns(uint256) {
+
+    function test() public pure returns (uint256) {
         uint256 _number2 = 2; // 局部变量 消耗 gas 低 在这里只有函数内部可以访问
-        return(_number2);
+        return (_number2);
     }
     // 全局变量 为 solidity 预留关键字 比如 msg.render block.number 等
 }
